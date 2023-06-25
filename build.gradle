@@ -1,28 +1,19 @@
 plugins {
     id 'java'
     id 'application'
-    id "org.graalvm.plugin.compiler" version "0.1.0-alpha2"
 }
 
 repositories {
-    mavenCentral()      // default repository for fetching dependencies
+    mavenCentral()
 }
 
-ext.graalVersion = '20.2.0'
-
-graal {
-    version "$graalVersion"
-}
+ext.graalVersion = '22.3.2'
 
 application {
-    mainClassName 'com.mycompany.app.App'
+    mainClass = 'com.mycompany.app.App'
 }
 
 dependencies {
     implementation "org.graalvm.sdk:graal-sdk:$graalVersion"
     implementation "org.graalvm.js:js:$graalVersion"
-    // necessary to integrate with legacy ScriptEngine based implementation
-    implementation "org.graalvm.js:js-scriptengine:$graalVersion"
-
-    testImplementation 'junit:junit:4.12'
 }
